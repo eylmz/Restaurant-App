@@ -1,6 +1,6 @@
 @extends('Layout.index')
 
-@section('Title','Kategori Ekle')
+@section('Title','Ürün Ekle')
 
 @section('Body')
 
@@ -10,36 +10,38 @@
 </div>
 @endif
 
-<h4 class="widgettitle nomargin shadowed">Kategori Ekle</h4>
+<h4 class="widgettitle nomargin shadowed">Ürün Ekle</h4>
 <div class="widgetcontent bordered shadowed nopadding">
     <form class="stdform stdform2" method="post" action="" enctype="multipart/form-data">
         <p>
-            <label>Kategori Adı</label>
+            <label>Ürün Adı</label>
             <span class="field"><input type="text" name="name" value="{{ $name }}" id="firstname2" class="input-xxlarge"></span>
         </p>
 
         <p>
-            <label>Sıralama</label>
-            <span class="field"><input type="text" name="sort" value="{{ $sort }}" id="lastname2" class="input-xxlarge"></span>
+            <label>Kısa Açıklama</label>
+            <span class="field"><input type="text" name="description" value="{{ $description }}" id="lastname2" class="input-xxlarge"></span>
         </p>
 
         <p>
-            <label>Resim</label>
+            <label>Ücret</label>
+            <span class="field"><input type="text" name="price" value="{{ $price }}" class="input-xxlarge"></span>
+        </p>
+
+        <p>
+            <label>Kategori</label>
             <span class="field">
-                <input type="file" name="image" id="email2" class="input-xxlarge">
-                @if ($file)
-                    <br/>Boş bırakırsanız değişmez
-                @endif
+                <select name="category">
+                    <option value="0">Kategori Seçiniz</option>
+                    {{ App\Helpers\MyHelpers::categoryShow($categories,$currentCategory,$parentID,"") }}
+                </select>
             </span>
         </p>
 
         <p>
-            <label>Üst Kategori</label>
+            <label>Resimler</label>
             <span class="field">
-                <select name="parentID">
-                    <option value="0">Üst Kategori Yok</option>
-                    {{ App\Helpers\MyHelpers::categoryShow($categories,$currentCategory,$parentID,"") }}
-                </select>
+                <input type="file" name="images[]" id="images">
             </span>
         </p>
 
@@ -50,4 +52,9 @@
     </form>
 </div>
 
+<script type="text/javascript">
+    jQuery('#images').fileuploader({
+
+    });
+</script>
 @endsection

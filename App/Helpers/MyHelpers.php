@@ -5,7 +5,7 @@
 
     class MyHelpers{
         static function upload($file,$dir,$name=null,$data=[]){
-            include "vendor/verot/class.upload.php/src/class.upload.php";
+            include_once "vendor/verot/class.upload.php/src/class.upload.php";
 
             $image = new \upload($file);
             if($name === null)
@@ -22,8 +22,12 @@
                 $image->$key = $value;
 
             $image->process(PUBLIC_DIR."Uploads/".trim($dir,"/")."/");
-            if($image->processed)
-                return $image->file_dst_name;
+            if($image->processed){
+                $name = $image->file_dst_name;
+                $image->clean();
+                return $name;
+            }
+            $image->clean();
             return false;
         }
 
@@ -41,15 +45,27 @@
             }
         }
 
-        static function categoryShow($array,$currentCategory,$tire = ""){
+        static function categoryShow($array,$currentCategory,$parentID=0,$tire = ""){
             if($array){
                 foreach($array as $arr){
                     if($currentCategory == $arr["categoryID"]) continue;
 
-                    echo '<option value="'.$arr['categoryID'].'">'.$tire." ".stripslashes($arr["name"]).'</option>';
+                    echo '<option value="'.$arr['categoryID'].'" '.($arr["categoryID"]==$parentID?'selected':null).'>'.$tire." ".stripslashes($arr["name"]).'</option>';
                     if($arr["subcategories"])
-                        Self::categoryShow($arr["subcategories"], $currentCategory,$tire." - ");
+                        Self::categoryShow($arr["subcategories"], $currentCategory,$parentID,$tire." - ");
                 }
             }
+        }
+
+        static function categoryID($array){
+            $ids = "";
+            if($array){
+                foreach($array as $arr){
+                    $ids .= $arr['categoryID'].",";
+                    if($arr["subcategories"])
+                        $ids .= Self::categoryID($arr["subcategories"]);
+                }
+            }
+            return $ids;
         }
     }

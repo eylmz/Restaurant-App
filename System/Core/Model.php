@@ -43,4 +43,8 @@
         public function lastQuery(){
             return $this->db->last();
         }
+
+        public function  lastID(){
+            return $this->db->id();
+        }
     }

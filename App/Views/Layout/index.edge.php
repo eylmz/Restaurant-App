@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ASSETS_URL}}prettify/prettify.css" type="text/css" />
     <script type="text/javascript" src="{{ASSETS_URL}}prettify/prettify.js"></script>
     <script type="text/javascript" src="{{ASSETS_URL}}js/jquery-1.9.1.min.js"></script>
+    <script src="{{ASSETS_URL}}Uploads/jquery.fileuploader.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="{{ASSETS_URL}}js/jquery-migrate-1.1.1.min.js"></script>
     <script type="text/javascript" src="{{ASSETS_URL}}js/jquery-ui-1.9.2.min.js"></script>
     <script type="text/javascript" src="{{ASSETS_URL}}js/jquery.flot.min.js"></script>
@@ -16,6 +17,9 @@
     <script type="text/javascript" src="{{ASSETS_URL}}js/custom.js"></script>
     <script type="text/javascript" src="{{ASSETS_URL}}js/jquery.dataTables.min.js"></script>
     <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="{{ASSETS_URL}}js/excanvas.min.js"></script><![endif]-->
+
+
+    <link href="{{ASSETS_URL}}Uploads/jquery.fileuploader.css" media="all" rel="stylesheet">
 </head>
 
 <body>
@@ -41,43 +45,21 @@
         <div class="leftmenu">
             <ul class="nav nav-tabs nav-stacked">
                 <li class="nav-header">Ana Menü</li>
-                <li class="active"><a href="{{ADMIN_URL}}index/index"><span class="icon-align-justify"></span> Anasayfa</a></li>
-                <li><a href="media.html"><span class="icon-picture"></span> Media</a></li>
-                <li class="dropdown"><a href=""><span class="icon-briefcase"></span> UI Elements &amp; Widgets</a>
+                <li class="active"><a href="{{ADMIN_URL}}"><span class="icon-align-justify"></span> Anasayfa</a></li>
+
+                <li class="dropdown"><a href=""><span class="icon-briefcase"></span> Kategoriler</a>
                     <ul>
-                        <li><a href="elements.html">Theme Components</a></li>
-                        <li><a href="bootstrap.html">Bootstrap Components</a></li>
+                        <li><a href="{{ADMIN_URL}}categories/add">Kategori Ekle</a></li>
+                        <li><a href="{{ADMIN_URL}}categories">Kategoriler</a></li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href=""><span class="icon-th-list"></span> Tables</a>
+                <li class="dropdown"><a href=""><span class="icon-th-list"></span> Ürünler</a>
                     <ul>
-                        <li><a href="table-static.html">Static Table</a></li>
-                        <li><a href="table-dynamic.html">Dynamic Table</a></li>
+                        <li><a href="{{ADMIN_URL}}products/add">Ürün Ekle</a></li>
+                        <li><a href="{{ADMIN_URL}}products">Ürünler</a></li>
                     </ul>
                 </li>
-                <li><a href="typography.html"><span class="icon-font"></span> Typography</a></li>
-                <li><a href="charts.html"><span class="icon-signal"></span> Graph &amp; Charts</a></li>
-                <li><a href="messages.html"><span class="icon-envelope"></span> Messages</a></li>
-                <li><a href="buttons.html"><span class="icon-hand-up"></span> Buttons &amp; Icons</a></li>
-                <li class="dropdown"><a href=""><span class="icon-pencil"></span> Forms</a>
-                    <ul>
-                        <li><a href="forms.html">Form Styles</a></li>
-                        <li><a href="wizards.html">Wizard Form</a></li>
-                        <li><a href="wysiwyg.html">WYSIWYG</a></li>
-                    </ul>
-                </li>
-                <li><a href="calendar.html"><span class="icon-calendar"></span> Calendar</a></li>
-                <li><a href="animations.html"><span class="icon-play"></span> Animations</a></li>
-                <li class="dropdown"><a href=""><span class="icon-book"></span> Other Pages</a>
-                    <ul>
-                        <li><a href="404.html">404 Error Page</a></li>
-                        <li><a href="invoice.html">Invoice Page</a></li>
-                        <li><a href="editprofile.html">Edit Profile</a></li>
-                        <li><a href="grid.html">Grid Styles</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="stickyheader.html">Sticky Header Page</a></li>
-                    </ul>
-                </li>
+
             </ul>
         </div>
     </div>
@@ -88,13 +70,11 @@
 
             <div class="headerright">
                 <div class="dropdown userinfo">
-                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="/page.html">Hi, ThemePixels! <b class="caret"></b></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="">Merhaba, Admin! <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="editprofile.html"><span class="icon-edit"></span> Edit Profile</a></li>
-                        <li><a href=""><span class="icon-wrench"></span> Account Settings</a></li>
-                        <li><a href=""><span class="icon-eye-open"></span> Privacy Settings</a></li>
+
                         <li class="divider"></li>
-                        <li><a href="index.html"><span class="icon-off"></span> Sign Out</a></li>
+                        <li><a href="{{ADMIN_URL}}"><span class="icon-off"></span> Çıkış Yap</a></li>
                     </ul>
                 </div>
             </div>

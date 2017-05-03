@@ -29,7 +29,7 @@
         <tr class="gradeX">
             <td style="width:20px"></td>
             <td>{{ $category['name'] }}</td>
-            <td><a href="{{PUBLIC_URL}}Upload/Categories/{{ $category['image'] }}" target="_blank"><img src="{{PUBLIC_URL}}Upload/Categories/{{ $category['image'] }}" style="height:50px; width:50px"></a></td>
+            <td><a href="{{PUBLIC_URL}}Uploads/Categories/{{ $category['image'] }}" target="_blank"><img src="{{PUBLIC_URL}}Uploads/Categories/{{ $category['image'] }}" style="height:50px; width:50px"></a></td>
             <td>{{ $category['sort'] }}</td>
 
             <td class="center" style="width:280px">

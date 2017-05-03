@@ -30,7 +30,8 @@
                 "name"=>"",
                 "sort"=>1,
                 "file"=>"",
-                "currentCategory"=>0
+                "currentCategory"=>0,
+                "parentID"=>0
             ];
 
             if($_POST){
@@ -55,5 +56,67 @@
             }
 
             $this->loadTemplate("Categories/add",$data);
+        }
+
+        function update($id){
+            $categoriesModel = new CategoriesModel();
+            $cat = $categoriesModel->get($id);
+            if(!$cat) App::route(ADMIN_URL."categories");
+            $categories = MyHelpers::categories(0);
+            $data = [
+                "alert"=>"",
+                "alertType"=>"error",
+                "categories" => $categories,
+                "name"=>$cat["name"],
+                "sort"=>$cat["sort"],
+                "file"=>$cat["image"],
+                "currentCategory"=>$cat["categoryID"],
+                "parentID"=>$cat["parentID"]
+            ];
+
+            if($_POST){
+                $name = addslashes(trim(strip_tags($_POST["name"])));
+                $parentID = (int)$_POST["parentID"];
+                $sort = (int)$_POST["sort"];
+
+                if($name){
+                    $err = 0;
+                    if($_FILES["image"]["name"]){
+                        $image = MyHelpers::upload($_FILES["image"], "Categories");
+                        if(!$image){
+                            $data["alert"] = "Resim yüklenirken bir sorun oluştu";
+                            $err = 1;
+                        }else{
+                            $data["file"] = $image;
+                        }
+                    }
+                    if($err == 0){
+                        $add = $categoriesModel->update([
+                            "name" => $name,
+                            "parentID" => $parentID,
+                            "sort"=>$sort,
+                            "image"=>$data["file"]
+                        ],$id);
+                        if($add){
+                            $data["alertType"] = "success";
+                            $data["alert"] = "Başarıyla tamamlandı!";
+                        }else $data["alert"] = "Bir sorun oluştu!";
+                    }
+                }else $data["alert"] = "Boş alan bırakmayınız!";
+            }
+
+            $this->loadTemplate("Categories/add",$data);
+        }
+
+        function delete($id){
+            $categoriesModel =  new CategoriesModel();
+            if(!$categoriesModel->get($id)) App::route(ADMIN_URL."categories");
+
+            $categories = explode(",",MyHelpers::categoryID(MyHelpers::categories(1)));
+            $remove = array_diff( $categories , [""," "]);
+
+
+
+
         }
     }
