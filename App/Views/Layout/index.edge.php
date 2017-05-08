@@ -60,6 +60,20 @@
                     </ul>
                 </li>
 
+                <li class="dropdown"><a href=""><span class="iconsweets-table"></span> Masalar</a>
+                    <ul>
+                        <li><a href="{{ADMIN_URL}}desks/add">Masa Ekle</a></li>
+                        <li><a href="{{ADMIN_URL}}desks">Masalar</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown"><a href=""><span class="icon-user"></span> Kullanıcılar</a>
+                    <ul>
+                        <li><a href="{{ADMIN_URL}}users/add">Kullanıcı Ekle</a></li>
+                        <li><a href="{{ADMIN_URL}}users">Kullanıcılar</a></li>
+                    </ul>
+                </li>
+
             </ul>
         </div>
     </div>

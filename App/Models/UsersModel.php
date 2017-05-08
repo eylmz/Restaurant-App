@@ -27,4 +27,8 @@
         function add($data){
             return $this->db->insert("users",$data);
         }
+
+        function login($username,$password){
+            return $this->db->get("users","*",["AND" => ["username"=>$username,"password"=>$password]]);
+        }
     }

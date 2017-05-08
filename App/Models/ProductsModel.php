@@ -17,4 +17,17 @@
                 return $this->db->get("products","*",["productID"=>$id]);
             return $this->db->select("products","*");
         }
+
+        function update($data,$id){
+            return $this->db->update("products", $data,["productID"=>$id]);
+        }
+
+        function getImages($id){
+            return $this->db->select("productimages","*",["productID"=>$id]);
+        }
+
+        function delete($id){
+            $this->db->delete("productimages", ["productID" => $id]);
+            return $this->db->delete("products",["productID"=>$id]);
+        }
     }
