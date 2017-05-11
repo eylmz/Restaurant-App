@@ -30,4 +30,8 @@
             $this->db->delete("productimages", ["productID" => $id]);
             return $this->db->delete("products",["productID"=>$id]);
         }
+
+        function getWithCategories($id){
+             return $this->db->select("products","*",["category"=>$id]);
+        }
     }

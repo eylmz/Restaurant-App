@@ -45,7 +45,7 @@
         <div class="leftmenu">
             <ul class="nav nav-tabs nav-stacked">
                 <li class="nav-header">Ana Menü</li>
-                <li class="active"><a href="{{ADMIN_URL}}"><span class="icon-align-justify"></span> Anasayfa</a></li>
+                <li class="active"><a href="{{ADMIN_URL}}orders"><span class="icon-align-justify"></span> Siparişler</a></li>
 
                 <li class="dropdown"><a href=""><span class="icon-briefcase"></span> Kategoriler</a>
                     <ul>
@@ -74,6 +74,8 @@
                     </ul>
                 </li>
 
+                <li><a href="{{ADMIN_URL}}login/logout"><span class="icon-remove"></span> Çıkış</a></li>
+
             </ul>
         </div>
     </div>
@@ -88,7 +90,7 @@
                     <ul class="dropdown-menu">
 
                         <li class="divider"></li>
-                        <li><a href="{{ADMIN_URL}}"><span class="icon-off"></span> Çıkış Yap</a></li>
+                        <li><a href="{{ADMIN_URL}}login/logout"><span class="icon-off"></span> Çıkış Yap</a></li>
                     </ul>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mobileasy</title>
+    <title>Restoran App</title>
     <link rel="stylesheet" href="{{ASSETS_URL}}css/style.default.css" type="text/css" />
     <script type="text/javascript" src="{{ASSETS_URL}}js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="{{ASSETS_URL}}js/jquery-migrate-1.1.1.min.js"></script>
