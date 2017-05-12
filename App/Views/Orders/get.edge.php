@@ -23,7 +23,7 @@
             <td>{{ $desk['name'] }}</td>
 
             <td class="center" style="width:150px">
-                <a href="{{ADMIN_URL}}orders/close/{{$desk['desksID']}}" onclick="return confirm('Masayı kapatmak istediğinizden emin misiniz?')" class="btn dropdown-toggle"><i class="iconfa-remove"></i> KAPAT</a>
+                <a href="{{ADMIN_URL}}orders/close/{{$desk['desksID']}}" target="_blank" class="btn dropdown-toggle"><i class="iconfa-remove"></i> KAPAT</a>
             </td>
         </tr>
         @endforeach

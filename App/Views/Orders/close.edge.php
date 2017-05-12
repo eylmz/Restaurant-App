@@ -7,6 +7,9 @@
 @if ($baskets)
 <h4 class="widgettitle nomargin shadowed">Sipariş Listesi</h4>
 <div class="widgetcontent bordered shadowed nopadding">
+    <?php
+        $toplam = 0;
+    ?>
     <table class="table table-bordered" id="dyntable">
         <thead>
         <tr>
@@ -24,16 +27,21 @@
             <td style="width:20px"></td>
             <td>{{ $basket['name'] }}</td>
             <td>{{ $basket['piece'] }}</td>
-            <td>{{ $basket['price'] }}</td>
-            <td>{{ $basket['piece'] * $basket['price'] }}</td>
+            <td>{{ $basket['price'] }} TL</td>
+            <td>{{ $basket['piece'] * $basket['price'] }} TL</td>
             <td>{{ $basket['status'] == 2 ? 'Onaylı' : $basket['status'] == 1 ? 'Onay Bekliyor' : 'Boş' }}</td>
         </tr>
+
+        <?php $toplam += $basket['piece'] * $basket['price']; ?>
+
         @endforeach
         </tbody>
     </table>
 
+    <div style="padding:10px; padding-bottom:0"><b>Toplam Tutar : </b><?=$toplam?> TL</div>
+
     <form action="" style="padding:10px" method="post">
-        <button class="btn" name="kapat" value="1"><i class="iconfa-remove"></i> Kapat</button>
+        <button class="btn" name="kapat" value="1" onclick="return confirm('Kapatmak istediginizden emin misiniz?')"><i class="iconfa-remove"></i> Kapat</button>
     </form>
 </div>
 @else
